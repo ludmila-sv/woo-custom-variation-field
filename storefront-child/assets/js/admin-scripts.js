@@ -1,7 +1,14 @@
-jQuery(document).ready( function($) {
-	$( 'a[href="#variable_product_options"]' ).on( 'click', function() {
-		setTimeout( () => {
+(function ($) {
+	'use strict';
+	$('#woocommerce-product-data').on('woocommerce_variations_loaded', function () {
+		if ($.fn.wpColorPicker) {
 			$('input[name*="_prod_color_var"]').wpColorPicker();
-		}, 1000);
-	} );
-} );
+		}
+	});
+	$('#variable_product_options').on('woocommerce_variations_added', function () {
+		if ($.fn.wpColorPicker) {
+			$('input[name*="_prod_color_var"]').wpColorPicker();
+		}
+	});
+	
+})(jQuery);
